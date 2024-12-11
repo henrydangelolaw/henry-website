@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henry D'Angelo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eafaf1;
+            color: #333;
+        }
+
+        header {
+            background-color: #4db6ac;
+            color: white;
+            padding: 1rem 0;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            background-color: #4db6ac;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        form input, form textarea, form button {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            background-color: #4db6ac;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #399c91;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>HenryDAngelo.com</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- About Me Section -->
+        <section id="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>Hi! I’m Henry. I’m a recent graduate from the University of Southern California (USC), graduating in 2024 with a double major in economics and philosophy. I’m interested in deontic logic, proof theory, and, somewhat more broadly, the nature of evaluation.</p>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog">
+            <div class="container">
+                <h2>Blog</h2>
+                <p>Here, you can find PDFs of my writings and updates.</p>
+                <form action="/upload" method="post" enctype="multipart/form-data">
+                    <label for="pdf-upload">Upload PDF:</label>
+                    <input type="file" id="pdf-upload" name="pdf" accept="application/pdf">
+                    <button type="submit" onclick="return validateUpload();">Upload</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h2>Contact</h2>
+                <form action="/send" method="post">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Henry D'Angelo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Ensure only the site owner can upload PDFs
+        function validateUpload() {
+            const isOwner = confirm("Are you the owner of this website?");
+            if (!isOwner) {
+                alert("Only the owner can upload PDFs.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
